@@ -11,18 +11,25 @@ public class AtmTests
     }
 
     [Fact]
-    public void Test_withraw()
+    public void Test_withdraw()
     {
         var result = MyAtmTest.withdraw(25);
         Assert.True(result);
         Assert.Equal(75, MyAtmTest.GetBalance());
     }
+    [Fact]
+    public void Test_withdrawFailure()
+    {
+        var WithdrawFailureResult = MyAtmTest.withdraw(125);
+        Assert.False(WithdrawFailureResult);
+        Assert.Equal(100, MyAtmTest.GetBalance());
+    }
 
     [Fact]
-    public void Test_withdraw_failure()
+    public void Test_deposit()
     {
-        var FailureResult = MyAtmTest.withdraw(125);
-        Assert.False(FailureResult);
+        var DepositFailureResult = MyAtmTest.deposit(-10);
+        Assert.False(DepositFailureResult);
         Assert.Equal(100, MyAtmTest.GetBalance());
     }
 
